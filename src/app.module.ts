@@ -53,11 +53,11 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'Lamineyamal192002!',
-      database: 'gimnasio_fit_db',
+      host: process.env.DB_HOST || 'localhost',
+      port: Number(process.env.DB_PORT) || 3306,
+      username: process.env.DB_USER || 'root',
+      password: process.env.DB_PASSWORD || 'Lamineyamal192002!',
+      database: process.env.DB_NAME || 'gimnasio_fit_db',
       entities: [
         Usuario,
         Ejercicio,
