@@ -12,8 +12,9 @@ export class Pago {
   @Column({ nullable: true })
   metodo_pago: string; // efectivo, tarjeta, transferencia
 
-  @Column({ type: 'datetime', nullable: true })
+    @Column({ type: 'timestamp', nullable: true, default: () => 'CURRENT_TIMESTAMP' })
   fecha_pago: Date;
+
 
   @Column({ nullable: true })
   descripcion: string;

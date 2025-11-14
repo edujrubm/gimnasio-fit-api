@@ -15,10 +15,10 @@ import { EjerciciosModule } from './ejercicios/ejercicios.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres', // 👈 IMPORTANTE: ya no 'mysql'
-      host: process.env.DB_HOST || 'localhost',
+      host: process.env.DB_HOST || 'dpg-d4bd4c0dl3ps739ak2s0-a',
       port: Number(process.env.DB_PORT) || 5432,
-      username: process.env.DB_USER || 'postgres',
-      password: process.env.DB_PASSWORD || 'postgres',
+      username: process.env.DB_USER || 'gimnasio_fit_db_user',
+      password: process.env.DB_PASSWORD || 'FBuMiEx8ZXeYkdrcgdDr8WMVJZAdiiyr',
       database: process.env.DB_NAME || 'gimnasio_fit_db',
       entities: [
         Usuario,
