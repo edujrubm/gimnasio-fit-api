@@ -12,6 +12,7 @@ export class LogSistema {
   @Column({ nullable: true })
   mensaje: string;
 
-  @Column({ type: 'datetime', nullable: true })
+    @Column({ type: 'timestamp', nullable: true, default: () => 'CURRENT_TIMESTAMP' })
   fecha: Date;
+
 }
