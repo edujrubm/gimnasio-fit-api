@@ -1,3 +1,4 @@
+// src/usuarios/usuarios.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Usuario } from './usuario.entity';
@@ -8,5 +9,6 @@ import { UsuariosController } from './usuarios.controller';
   imports: [TypeOrmModule.forFeature([Usuario])],
   providers: [UsuariosService],
   controllers: [UsuariosController],
+  exports: [UsuariosService], // <- importante para que otros módulos lo usen
 })
 export class UsuariosModule {}

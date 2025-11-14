@@ -19,16 +19,20 @@ export class UsuariosService {
     return this.usuariosRepository.findOne({ where: { id } });
   }
 
+  findByEmail(email: string): Promise<Usuario | null> {
+    return this.usuariosRepository.findOne({ where: { email } });
+  }
+
   create(data: any): Promise<Usuario> {
-  const nuevo: Usuario = this.usuariosRepository.create(data as Usuario);
-  return this.usuariosRepository.save(nuevo);
-}
+    const nuevo: Usuario = this.usuariosRepository.create(data as Usuario);
+    return this.usuariosRepository.save(nuevo);
+  }
 
   async update(id: number, data: any): Promise<Usuario | null> {
     const usuario = await this.usuariosRepository.findOne({ where: { id } });
 
     if (!usuario) {
-      return null; // aquí admitimos que puede regresar null
+      return null;
     }
 
     Object.assign(usuario, data);
@@ -36,13 +40,12 @@ export class UsuariosService {
   }
 
   async delete(id: number): Promise<boolean> {
-  const result = await this.usuariosRepository.delete(id);
+    const result = await this.usuariosRepository.delete(id);
 
-  if (!result.affected) {
-    return false;
+    if (!result.affected) {
+      return false;
+    }
+
+    return result.affected > 0;
   }
-
-  return result.affected > 0;
-}
-
 }
